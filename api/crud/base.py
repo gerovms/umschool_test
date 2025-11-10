@@ -9,10 +9,8 @@ T = TypeVar("T")
 
 
 class CRUDBase:
-    """Базовай класс методов обращения к БД."""
 
     def __init__(self, model: T) -> None:
-        """Метод инициализации объектов."""
         self.model = model
 
     async def get(
@@ -20,7 +18,6 @@ class CRUDBase:
         obj_id: int,
         session: AsyncSession,
     ) -> Optional[T]:
-        """Получить объект по ID."""
         db_obj = await session.execute(
             select(self.model).where(
                 self.model.id == obj_id,
@@ -32,12 +29,10 @@ class CRUDBase:
         self,
         session: AsyncSession,
     ) -> List[T]:
-        """Получить список всех объектов."""
         db_objs = await session.execute(select(self.model))
         return db_objs.scalars().all()
 
     async def create(self, obj_in: Any, session: AsyncSession) -> T:
-        """Создать объект и подгрузить отношения, если есть."""
         if hasattr(obj_in, "dict"):
             obj_in_data = obj_in.dict()
         elif isinstance(obj_in, dict):
@@ -58,7 +53,6 @@ class CRUDBase:
         return db_obj
 
     async def update(self, obj_id: int, obj_in: Any, session: AsyncSession) -> T:
-        """Обновить объект и подгрузить отношения, если есть."""
         result = await session.execute(
             select(self.model).where(self.model.id == obj_id)
             )

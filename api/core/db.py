@@ -15,7 +15,6 @@ from core.config import settings
 
 
 class PreBase:
-    """Базовый класс для всех моделей."""
 
     id: Mapped[int] = mp(Integer, primary_key=True)
 
@@ -28,7 +27,6 @@ AsyncSessionLocal = async_sessionmaker(engine, class_=AsyncSession)
 
 
 async def get_async_session() -> AsyncGenerator:
-    """Асинхронный генератор сессий."""
     async with AsyncSessionLocal() as async_session:
         try:
             yield async_session

@@ -19,7 +19,6 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
-        """Формирование URL для подключения БД."""
         return (
             f"postgresql+asyncpg://"
             f"{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@"
