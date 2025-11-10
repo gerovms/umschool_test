@@ -1,0 +1,3 @@
+SUBJECTS_PER_PAGE = 5
+TOTAL_PAGES = 3
+API_URL = "http://api:8000"

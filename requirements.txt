@@ -1,0 +1,13 @@
+aiogram
+alembic
+asyncpg
+beautifulsoup4
+fastapi
+httpx
+psycopg2-binary
+pydantic
+pydantic-settings
+python-dotenv
+requests-cache
+SQLAlchemy
+uvicorn[standard]
